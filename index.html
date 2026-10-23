@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZuraClass | Resource Vault</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .neon-glow { box-shadow: 0 0 40px rgba(59, 130, 246, 0.15); }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3); border-color: rgba(59, 130, 246, 0.5); }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col antialiased selection:bg-blue-600 selection:text-white">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-40 bg-gray-900/90 backdrop-blur-md border-b border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap justify-between items-center gap-4">
+            
+            <!-- Text Logo -->
+            <div class="flex items-center">
+                <span class="text-2xl font-extrabold tracking-tight text-white block leading-tight">
+                    ZURA<span class="text-blue-500">LOGIC</span>
+                </span>
+            </div>
+
+            <!-- Header Controls: Language & Social Links -->
+            <div class="flex items-center space-x-3">
+                <!-- Language Selector -->
+                <div class="flex items-center bg-gray-800 border border-gray-700 rounded-lg px-2.5 py-1 text-xs">
+                    <i class="fa-solid fa-globe text-blue-400 mr-2"></i>
+                    <select id="langSelector" onchange="switchLanguage(this.value)" class="bg-transparent text-blue-400 font-medium focus:outline-none cursor-pointer">
+                        <option value="en" class="bg-gray-800 text-white">🇺🇸 English</option>
+                        <option value="id" class="bg-gray-800 text-white" selected>🇮🇩 Bahasa Indonesia</option>
+                        <option value="th" class="bg-gray-800 text-white">🇹🇭 ไทย (Thai)</option>
+                        <option value="es" class="bg-gray-800 text-white">🇪🇸 Español</option>
+                        <option value="ar" class="bg-gray-800 text-white">🇦🇪 العربية (Arabic)</option>
+                        <option value="zh" class="bg-gray-800 text-white">🇨🇳 中文 (Chinese)</option>
+                        <option value="fr" class="bg-gray-800 text-white">🇫🇷 Français</option>
+                        <option value="de" class="bg-gray-800 text-white">🇩🇪 Deutsch</option>
+                        <option value="hi" class="bg-gray-800 text-white">🇮🇳 हिन्दी (Hindi)</option>
+                        <option value="it" class="bg-gray-800 text-white">🇮🇹 Italiano</option>
+                        <option value="ja" class="bg-gray-800 text-white">🇯🇵 日本語 (Japanese)</option>
+                        <option value="ru" class="bg-gray-800 text-white">🇷🇺 Русский (Russian)</option>
+                    </select>
+                </div>
+
+                <!-- YouTube Channel Button -->
+                <a href="https://youtube.com/@zuraclass" target="_blank" 
+                   class="hidden sm:flex bg-red-600/10 hover:bg-red-600/20 text-red-500 border border-red-600/30 font-medium text-xs px-3.5 py-1.5 rounded-lg transition-all items-center">
+                    <i class="fa-brands fa-youtube mr-1.5"></i>
+                    <span id="uiYoutubeBtn">YouTube</span>
+                </a>
+
+                <!-- Discord Community Button -->
+                <a href="https://discord.com/channels/1551535982212423681/1563075349808680970" target="_blank" 
+                   class="bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs px-3.5 py-1.5 rounded-lg transition-all flex items-center shadow-lg shadow-blue-600/20">
+                    <i class="fa-brands fa-discord mr-1.5"></i>
+                    <span id="uiDiscordBtn">Community</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col items-center">
+        
+        <!-- Hero Banner -->
+        <div class="text-center max-w-3xl mb-12">
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-900/30 border border-blue-500/30 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-4">
+                <i class="fa-solid fa-vault mr-2"></i> <span id="uiBadge">Exclusive Access</span>
+            </div>
+            <h1 id="uiHeroTitle" class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+                ZuraClass <span class="text-blue-500">Resource Vault</span>
+            </h1>
+            <p id="uiHeroDesc" class="text-gray-400 text-base sm:text-lg leading-relaxed">
+                Your central hub for free no-code assets, templates, and automation blueprints to scale your business operations instantly.
+            </p>
+        </div>
+
+        <!-- Resources Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl relative z-10 neon-glow rounded-3xl">
+            
+            <!-- Card 1: Formula Library -->
+            <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 transition-all duration-300 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-900/30 flex items-center justify-center border border-blue-500/30">
+                        <i class="fa-solid fa-square-root-variable text-xl text-blue-400"></i>
+                    </div>
+                    <span class="px-2.5 py-1 bg-green-900/30 text-green-400 border border-green-800 rounded-md text-[10px] font-bold uppercase tracking-wide">
+                        <span class="uiStatusActive">Available</span>
+                    </span>
+                </div>
+                <h3 id="uiCard1Title" class="text-xl font-bold text-white mb-2">100+ AppSheet & Spreadsheets Formula</h3>
+                <p id="uiCard1Desc" class="text-gray-400 text-sm mb-6 flex-grow">The ultimate cheat-sheet of expressions and functions to power up your custom apps and dashboards.</p>
+                <a href="https://zuraclass.github.io/zuraclass-formula-library/" id="uiCard1Btn" class="w-full text-center bg-gray-800 hover:bg-gray-700 border border-gray-700 text-white font-medium text-sm py-2.5 rounded-xl transition-all">
+                    Access Library <i class="fa-solid fa-arrow-right ml-1.5 text-xs"></i>
+                </a>
+            </div>
+
+            <!-- Card 2: SVG Icons -->
+            <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 transition-all duration-300 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-purple-900/30 flex items-center justify-center border border-purple-500/30">
+                        <i class="fa-solid fa-icons text-xl text-purple-400"></i>
+                    </div>
+                    <span class="px-2.5 py-1 bg-green-900/30 text-green-400 border border-green-800 rounded-md text-[10px] font-bold uppercase tracking-wide">
+                        <span class="uiStatusActive">Available</span>
+                    </span>
+                </div>
+                <h3 id="uiCard2Title" class="text-xl font-bold text-white mb-2">100+ SVG UI Icons Library</h3>
+                <p id="uiCard2Desc" class="text-gray-400 text-sm mb-6 flex-grow">A curated collection of crisp, scalable vector icons designed specifically for modern enterprise dashboards.</p>
+                <a href="https://zuraclass.github.io/zuraclass-svg-library-lite/" id="uiCard2Btn" class="w-full text-center bg-gray-800 hover:bg-gray-700 border border-gray-700 text-white font-medium text-sm py-2.5 rounded-xl transition-all">
+                    Browse Icons <i class="fa-solid fa-arrow-right ml-1.5 text-xs"></i>
+                </a>
+            </div>
+
+            <!-- Card 3: AI Prompts (Soon) -->
+            <div class="bg-gray-900/50 border border-gray-800 rounded-2xl p-6 relative overflow-hidden flex flex-col opacity-80">
+                <div class="absolute inset-0 bg-gray-950/20 backdrop-blur-[1px]"></div>
+                <div class="flex justify-between items-start mb-4 relative z-10">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-900/20 flex items-center justify-center border border-emerald-500/20">
+                        <i class="fa-solid fa-robot text-xl text-emerald-500"></i>
+                    </div>
+                    <span class="px-2.5 py-1 bg-yellow-900/30 text-yellow-500 border border-yellow-800 rounded-md text-[10px] font-bold uppercase tracking-wide">
+                        <span class="uiStatusSoon">Coming Soon</span>
+                    </span>
+                </div>
+                <h3 id="uiCard3Title" class="text-xl font-bold text-white mb-2 relative z-10">Ultimate AI Prompt Blueprints</h3>
+                <p id="uiCard3Desc" class="text-gray-500 text-sm mb-6 flex-grow relative z-10">Copy-paste prompt architectures for business owners to automate copywriting, data parsing, and client emails.</p>
+                <button disabled id="uiCard3Btn" class="relative z-10 w-full text-center bg-gray-900 border border-gray-800 text-gray-500 font-medium text-sm py-2.5 rounded-xl cursor-not-allowed">
+                    Locked
+                </button>
+            </div>
+
+            <!-- Card 4: CRM Sheet (Soon) -->
+            <div class="bg-gray-900/50 border border-gray-800 rounded-2xl p-6 relative overflow-hidden flex flex-col opacity-80">
+                <div class="absolute inset-0 bg-gray-950/20 backdrop-blur-[1px]"></div>
+                <div class="flex justify-between items-start mb-4 relative z-10">
+                    <div class="w-12 h-12 rounded-xl bg-orange-900/20 flex items-center justify-center border border-orange-500/20">
+                        <i class="fa-solid fa-table-columns text-xl text-orange-500"></i>
+                    </div>
+                    <span class="px-2.5 py-1 bg-yellow-900/30 text-yellow-500 border border-yellow-800 rounded-md text-[10px] font-bold uppercase tracking-wide">
+                        <span class="uiStatusSoon">Coming Soon</span>
+                    </span>
+                </div>
+                <h3 id="uiCard4Title" class="text-xl font-bold text-white mb-2 relative z-10">CRM Sheet Template</h3>
+                <p id="uiCard4Desc" class="text-gray-500 text-sm mb-6 flex-grow relative z-10">A fully functional, interconnected Google Sheets CRM system ready to plug directly into AppSheet.</p>
+                <button disabled id="uiCard4Btn" class="relative z-10 w-full text-center bg-gray-900 border border-gray-800 text-gray-500 font-medium text-sm py-2.5 rounded-xl cursor-not-allowed">
+                    Locked
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Upsell Membership Section -->
+        <div class="mt-16 w-full max-w-4xl bg-gradient-to-r from-red-900/20 to-gray-900/50 border border-red-800/40 rounded-3xl p-8 sm:p-10 text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-red-500/10 rounded-full blur-3xl"></div>
+            
+            <h2 id="uiHelpTitle" class="text-2xl sm:text-3xl font-bold text-white mb-3 relative z-10">Stuck on a build? Need expert eyes?</h2>
+            <p id="uiHelpDesc" class="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mb-8 relative z-10">
+                Join the ZuraClass YouTube Membership to unlock exclusive Discord VIP access. Get 1-on-1 consultations, priority code reviews, and direct help from our team.
+            </p>
+            
+            <a href="https://www.youtube.com/channel/UC7E98cGagwKgc7E_F2CtZpQ/join" target="_blank" 
+               class="relative z-10 inline-flex items-center justify-center bg-red-600 hover:bg-red-500 text-white font-bold text-sm px-8 py-3.5 rounded-xl transition-all shadow-lg shadow-red-600/20 hover:scale-105 active:scale-95">
+                <i class="fa-brands fa-youtube mr-2 text-lg"></i> <span id="uiHelpBtn">Join ZuraClass Membership</span>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800/80 py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-gray-500">
+            <p id="uiFooterText">ZuraClass Ecosystem &copy; 2026. Empowering No-Code & Automation Builders Worldwide.</p>
+        </div>
+    </footer>
+
+    <!-- Translations & Script -->
+    <script>
+        const uiTranslations = {
+            en: {
+                youtubeBtn: "Visit YouTube",
+                discordBtn: "Join Community",
+                badge: "Exclusive Access",
+                heroTitle: "ZuraClass <span class='text-blue-500'>Resource Vault</span>",
+                heroDesc: "Your central hub for free no-code assets, templates, and automation blueprints to scale your business operations instantly.",
+                statusActive: "Available",
+                statusSoon: "Coming Soon",
+                btnAccess: "Access Library",
+                btnBrowse: "Browse Icons",
+                btnLocked: "Locked",
+                card1Title: "100+ AppSheet & Spreadsheets Formula",
+                card1Desc: "The ultimate cheat-sheet of expressions and functions to power up your custom apps and dashboards.",
+                card2Title: "100+ SVG UI Icons Library",
+                card2Desc: "A curated collection of crisp, scalable vector icons designed specifically for modern enterprise dashboards.",
+                card3Title: "Ultimate AI Prompt Blueprints",
+                card3Desc: "Copy-paste prompt architectures for business owners to automate copywriting, data parsing, and client emails.",
+                card4Title: "CRM Sheet Template",
+                card4Desc: "A fully functional, interconnected Google Sheets CRM system ready to plug directly into AppSheet.",
+                helpTitle: "Stuck on a build? Need expert eyes?",
+                helpDesc: "Join the ZuraClass YouTube Membership to unlock exclusive Discord VIP access. Get 1-on-1 consultations, priority code reviews, and direct help from our team.",
+                helpBtn: "Join ZuraClass Membership",
+                footerText: "ZuraClass Ecosystem © 2026. Empowering No-Code & Automation Builders Worldwide."
+            },
+            id: {
+                youtubeBtn: "Visit YouTube",
+                discordBtn: "Join Community",
+                badge: "Akses Eksklusif",
+                heroTitle: "Brankas <span class='text-blue-500'>ZuraClass</span>",
+                heroDesc: "Pusat sumber daya gratis! Kumpulan aset no-code, template, dan blueprint otomatisasi untuk bisnis Anda.",
+                statusActive: "Tersedia",
+                statusSoon: "Segera Hadir",
+                btnAccess: "Akses Pustaka",
+                btnBrowse: "Lihat Ikon",
+                btnLocked: "Terkunci",
+                card1Title: "100+ Formula AppSheet & Spreadsheets",
+                card1Desc: "Kamus lengkap formula dan fungsi untuk membangun aplikasi dan dashboard kustom Anda.",
+                card2Title: "100+ Pustaka Ikon UI SVG",
+                card2Desc: "Koleksi ikon vektor yang tajam dan siap pakai untuk mempercantik tampilan aplikasi enterprise Anda.",
+                card3Title: "Kumpulan Prompt AI Bisnis",
+                card3Desc: "Tinggal copas! Template prompt AI untuk otomatisasi balas email, copywriting, dan rekap data bisnis.",
+                card4Title: "Template CRM Spreadsheets",
+                card4Desc: "Sistem CRM Google Sheets yang saling terhubung dan siap disambungkan langsung ke AppSheet.",
+                helpTitle: "Stuck bikin aplikasi? Butuh bantuan pakar?",
+                helpDesc: "Gabung Membership YouTube ZuraClass untuk buka akses VIP Discord. Dapatkan konsultasi 1-on-1, review kode, dan bantuan langsung dari tim kami.",
+                helpBtn: "Join Membership ZuraClass",
+                footerText: "Ekosistem ZuraClass © 2026. Memberdayakan Builder No-Code & Otomatisasi."
+            },
+            th: {
+                youtubeBtn: "YouTube",
+                discordBtn: "ชุมชน",
+                badge: "สิทธิพิเศษ",
+                heroTitle: "คลังข้อมูล <span class='text-blue-500'>ZuraClass</span>",
+                heroDesc: "ศูนย์รวมทรัพยากรฟรี! เทมเพลตและระบบอัตโนมัติเพื่อขยายธุรกิจของคุณ",
+                statusActive: "พร้อมใช้งาน",
+                statusSoon: "เร็วๆ นี้",
+                btnAccess: "เข้าถึงคลังข้อมูล",
+                btnBrowse: "เรียกดูไอคอน",
+                btnLocked: "ล็อค",
+                card1Title: "สูตร AppSheet และ Spreadsheets 100+",
+                card1Desc: "รวมสูตรและฟังก์ชันสำหรับสร้างแอปพลิเคชันและแดชบอร์ดของคุณ",
+                card2Title: "คลังไอคอน UI แบบ SVG 100+",
+                card2Desc: "ชุดไอคอนเวกเตอร์ที่คมชัด ออกแบบมาเพื่อแอปพลิเคชันระดับองค์กร",
+                card3Title: "ชุดคำสั่ง AI สำหรับธุรกิจ",
+                card3Desc: "คัดลอกไปใช้ได้เลย! โครงสร้างคำสั่ง AI เพื่อระบบอัตโนมัติในการทำงาน",
+                card4Title: "เทมเพลต CRM Spreadsheets",
+                card4Desc: "ระบบ CRM บน Google Sheets ที่พร้อมเชื่อมต่อกับ AppSheet ทันที",
+                helpTitle: "ติดปัญหา? ต้องการผู้เชี่ยวชาญ?",
+                helpDesc: "สมัครสมาชิก YouTube ZuraClass เพื่อรับสิทธิ์ VIP ใน Discord ปรึกษาแบบ 1 ต่อ 1 และรับความช่วยเหลือโดยตรง",
+                helpBtn: "สมัครสมาชิก ZuraClass",
+                footerText: "ZuraClass Ecosystem © 2026"
+            },
+            es: {
+                youtubeBtn: "YouTube",
+                discordBtn: "Comunidad",
+                badge: "Acceso Exclusivo",
+                heroTitle: "Bóveda <span class='text-blue-500'>ZuraClass</span>",
+                heroDesc: "Tu centro de recursos gratuitos para escalar tu negocio con automatización.",
+                statusActive: "Disponible",
+                statusSoon: "Próximamente",
+                btnAccess: "Acceder a la Biblioteca",
+                btnBrowse: "Explorar Íconos",
+                btnLocked: "Bloqueado",
+                card1Title: "100+ Fórmulas de AppSheet y Sheets",
+                card1Desc: "La guía definitiva de expresiones para potenciar tus apps y dashboards.",
+                card2Title: "Biblioteca de 100+ Íconos SVG",
+                card2Desc: "Íconos vectoriales escalables diseñados para interfaces modernas.",
+                card3Title: "Plantillas de Prompts de IA",
+                card3Desc: "Prompts listos para copiar y pegar para automatizar tu negocio.",
+                card4Title: "Plantilla CRM de Spreadsheets",
+                card4Desc: "Sistema CRM funcional en Google Sheets listo para AppSheet.",
+                helpTitle: "¿Atascado? ¿Necesitas ayuda experta?",
+                helpDesc: "Únete a la Membresía de YouTube de ZuraClass para desbloquear acceso VIP a Discord y consultas 1 a 1.",
+                helpBtn: "Unirse a ZuraClass",
+                footerText: "Ecosistema ZuraClass © 2026"
+            },
+            zh: {
+                youtubeBtn: "YouTube",
+                discordBtn: "社区",
+                badge: "专属访问权限",
+                heroTitle: "ZuraClass <span class='text-blue-500'>资源库</span>",
+                heroDesc: "您的一站式免费资源中心：无代码资产、模板和自动化蓝图。",
+                statusActive: "可用",
+                statusSoon: "即将推出",
+                btnAccess: "访问公式库",
+                btnBrowse: "浏览图标",
+                btnLocked: "已锁定",
+                card1Title: "100+ AppSheet & Spreadsheets 公式",
+                card1Desc: "为您的自定义应用提供支持的终极函数代码速查表。",
+                card2Title: "100+ SVG 矢量图标库",
+                card2Desc: "专为现代企业管理后台设计的清晰矢量图标集合。",
+                card3Title: "企业级 AI 提示词库",
+                card3Desc: "复制即用的 AI 提示词架构，实现自动化文案与邮件处理。",
+                card4Title: "CRM 客户管理表格模板",
+                card4Desc: "功能完备的 Google 表格 CRM 系统，随时可接入 AppSheet。",
+                helpTitle: "遇到开发瓶颈？需要专家指导？",
+                helpDesc: "加入 ZuraClass YouTube 会员，解锁专属 Discord VIP 权限，获取一对一咨询及直接技术支持。",
+                helpBtn: "加入 ZuraClass 会员",
+                footerText: "ZuraClass 生态系统 © 2026"
+            },
+            ar: {
+                youtubeBtn: "يوتيوب",
+                discordBtn: "المجتمع",
+                badge: "وصول حصري",
+                heroTitle: "خزينة <span class='text-blue-500'>ZuraClass</span>",
+                heroDesc: "المركز الرئيسي للموارد المجانية لتطوير وأتمتة أعمالك فوراً.",
+                statusActive: "متاح",
+                statusSoon: "قريباً",
+                btnAccess: "دخول المكتبة",
+                btnBrowse: "تصفح الأيقونات",
+                btnLocked: "مغلق",
+                card1Title: "+100 صيغة لـ AppSheet والجداول",
+                card1Desc: "الدليل الشامل للصيغ والدوال لتطوير تطبيقاتك المخصصة.",
+                card2Title: "+100 أيقونة SVG",
+                card2Desc: "مجموعة أيقونات مصممة لتطبيقات الأعمال الحديثة.",
+                card3Title: "قوالب ذكاء اصطناعي للأعمال",
+                card3Desc: "أوامر جاهزة للنسخ لتسهيل عملك عبر الذكاء الاصطناعي.",
+                card4Title: "قالب نظام إدارة العملاء CRM",
+                card4Desc: "نظام جداول متكامل جاهز للربط مع AppSheet.",
+                helpTitle: "هل تواجه مشكلة؟ تحتاج خبير؟",
+                helpDesc: "انضم لعضوية يوتيوب لفتح قنوات VIP في ديسكورد والحصول على استشارات فردية.",
+                helpBtn: "انضم لعضوية ZuraClass",
+                footerText: "منظومة ZuraClass © 2026"
+            },
+            fr: {
+                youtubeBtn: "YouTube",
+                discordBtn: "Communauté",
+                badge: "Accès Exclusif",
+                heroTitle: "Le Coffre <span class='text-blue-500'>ZuraClass</span>",
+                heroDesc: "Votre hub de ressources gratuites pour automatiser votre entreprise.",
+                statusActive: "Disponible",
+                statusSoon: "Bientôt",
+                btnAccess: "Accéder à la Bibliothèque",
+                btnBrowse: "Parcourir les Icônes",
+                btnLocked: "Verrouillé",
+                card1Title: "100+ Formules AppSheet & Sheets",
+                card1Desc: "L'antisèche ultime des fonctions pour vos applications sur mesure.",
+                card2Title: "Bibliothèque de 100+ Icônes SVG",
+                card2Desc: "Collection d'icônes vectorielles pour vos tableaux de bord.",
+                card3Title: "Prompts IA pour Entreprises",
+                card3Desc: "Architecture de requêtes IA prêtes à l'emploi.",
+                card4Title: "Modèle CRM Spreadsheets",
+                card4Desc: "Système CRM complet prêt à être connecté à AppSheet.",
+                helpTitle: "Bloqué sur un projet ? Besoin d'aide ?",
+                helpDesc: "Rejoignez l'abonnement YouTube ZuraClass pour débloquer l'accès VIP Discord.",
+                helpBtn: "Rejoindre ZuraClass",
+                footerText: "Écosystème ZuraClass © 2026"
+            },
+            de: {
+                youtubeBtn: "YouTube",
+                discordBtn: "Community",
+                badge: "Exklusiver Zugang",
+                heroTitle: "ZuraClass <span class='text-blue-500'>Ressourcen-Tresor</span>",
+                heroDesc: "Ihr zentraler Hub für kostenlose Vorlagen und Automatisierungs-Blueprints.",
+                statusActive: "Verfügbar",
+                statusSoon: "Demnächst",
+                btnAccess: "Bibliothek aufrufen",
+                btnBrowse: "Icons durchsuchen",
+                btnLocked: "Gesperrt",
+                card1Title: "100+ AppSheet & Sheets Formeln",
+                card1Desc: "Der ultimative Spickzettel für Ihre benutzerdefinierten Apps.",
+                card2Title: "100+ SVG Icons Bibliothek",
+                card2Desc: "Vektorgrafiken speziell für moderne Enterprise-Dashboards.",
+                card3Title: "KI-Prompt Vorlagen",
+                card3Desc: "Fertige KI-Befehle zur Automatisierung Ihres Geschäfts.",
+                card4Title: "CRM-Vorlagen",
+                card4Desc: "Ein voll funktionsfähiges Google Sheets CRM-System.",
+                helpTitle: "Kommen Sie nicht weiter?",
+                helpDesc: "Treten Sie der ZuraClass YouTube-Mitgliedschaft bei für 1-zu-1 Hilfe und Discord VIP.",
+                helpBtn: "ZuraClass beitreten",
+                footerText: "ZuraClass Ökosystem © 2026"
+            },
+            hi: {
+                youtubeBtn: "यूट्यूब",
+                discordBtn: "कम्युनिटी",
+                badge: "विशेष पहुंच",
+                heroTitle: "ZuraClass <span class='text-blue-500'>रिसोर्स वॉल्ट</span>",
+                heroDesc: "आपके बिजनेस को बढ़ाने के लिए मुफ्त टेम्पलेट्स और टूल्स।",
+                statusActive: "उपलब्ध",
+                statusSoon: "जल्द आ रहा है",
+                btnAccess: "लाइब्रेरी देखें",
+                btnBrowse: "आइकन देखें",
+                btnLocked: "लॉक है",
+                card1Title: "100+ AppSheet और Sheets फ़ॉर्मूले",
+                card1Desc: "आपके ऐप्स को पावर देने के लिए सबसे शानदार फ़ॉर्मूला गाइड।",
+                card2Title: "100+ SVG आइकन लाइब्रेरी",
+                card2Desc: "आधुनिक डैशबोर्ड के लिए डिज़ाइन किए गए बेहतरीन आइकन।",
+                card3Title: "AI प्रॉम्प्ट ब्लूप्रिंट्स",
+                card3Desc: "कॉपी-पेस्ट करने के लिए तैयार AI प्रॉम्प्ट्स।",
+                card4Title: "CRM शीट टेम्पलेट",
+                card4Desc: "AppSheet के लिए तैयार पूरी तरह काम करने वाला CRM।",
+                helpTitle: "प्रोजेक्ट में फंस गए हैं? मदद चाहिए?",
+                helpDesc: "VIP डिस्कॉर्ड एक्सेस और 1-ऑन-1 कंसल्टेशन के लिए YouTube मेंबरशिप ज्वाइन करें।",
+                helpBtn: "ZuraClass ज्वाइन करें",
+                footerText: "ZuraClass इकोसिस्टम © 2026"
+            },
+            it: {
+                youtubeBtn: "YouTube",
+                discordBtn: "Community",
+                badge: "Accesso Esclusivo",
+                heroTitle: "Cassaforte <span class='text-blue-500'>ZuraClass</span>",
+                heroDesc: "Il tuo hub per risorse gratuite, modelli e automazioni.",
+                statusActive: "Disponibile",
+                statusSoon: "Prossimamente",
+                btnAccess: "Accedi alla Libreria",
+                btnBrowse: "Esplora Icone",
+                btnLocked: "Bloccato",
+                card1Title: "100+ Formule AppSheet e Sheets",
+                card1Desc: "La guida definitiva di espressioni per le tue app.",
+                card2Title: "Libreria 100+ Icone SVG",
+                card2Desc: "Collezione di icone vettoriali per dashboard moderne.",
+                card3Title: "Modelli di Prompt AI",
+                card3Desc: "Architetture di prompt pronte per l'uso aziendale.",
+                card4Title: "Modello CRM Spreadsheets",
+                card4Desc: "Sistema CRM completo pronto per AppSheet.",
+                helpTitle: "Bloccato? Serve aiuto?",
+                helpDesc: "Unisciti alla Membership YouTube per accesso VIP Discord e consulenze 1-a-1.",
+                helpBtn: "Unisciti a ZuraClass",
+                footerText: "Ecosistema ZuraClass © 2026"
+            },
+            ja: {
+                youtubeBtn: "YouTube",
+                discordBtn: "コミュニティ",
+                badge: "限定アクセス",
+                heroTitle: "ZuraClass <span class='text-blue-500'>リソース保管庫</span>",
+                heroDesc: "ビジネスを自動化するための無料テンプレートとツール集。",
+                statusActive: "利用可能",
+                statusSoon: "近日公開",
+                btnAccess: "ライブラリへ",
+                btnBrowse: "アイコンを見る",
+                btnLocked: "ロック中",
+                card1Title: "100+ AppSheet & Sheets 数式",
+                card1Desc: "カスタムアプリを強力にする関数と数式の完全ガイド。",
+                card2Title: "100+ SVG アイコンライブラリ",
+                card2Desc: "モダンなダッシュボード専用のベクターアイコン集。",
+                card3Title: "AI プロンプトテンプレート",
+                card3Desc: "コピペで使えるビジネス用AIプロンプト集。",
+                card4Title: "CRM テンプレート",
+                card4Desc: "AppSheetに接続可能なGoogleスプレッドシートCRM。",
+                helpTitle: "開発で行き詰まりましたか？",
+                helpDesc: "YouTubeメンバーシップに参加して、VIP Discordアクセスと個別相談を手に入れましょう。",
+                helpBtn: "ZuraClass に参加",
+                footerText: "ZuraClass エコシステム © 2026"
+            },
+            ru: {
+                youtubeBtn: "YouTube",
+                discordBtn: "Сообщество",
+                badge: "Эксклюзивный Доступ",
+                heroTitle: "Хранилище <span class='text-blue-500'>ZuraClass</span>",
+                heroDesc: "Ваш центр бесплатных ресурсов и шаблонов для автоматизации.",
+                statusActive: "Доступно",
+                statusSoon: "Скоро",
+                btnAccess: "Открыть библиотеку",
+                btnBrowse: "Просмотр иконок",
+                btnLocked: "Закрыто",
+                card1Title: "100+ Формул AppSheet и Sheets",
+                card1Desc: "Полный справочник функций для ваших приложений.",
+                card2Title: "100+ SVG Иконок",
+                card2Desc: "Векторные иконки для современных корпоративных панелей.",
+                card3Title: "Шаблоны AI Запросов",
+                card3Desc: "Готовые AI промпты для бизнеса.",
+                card4Title: "CRM Шаблон Spreadsheets",
+                card4Desc: "Готовая CRM система для интеграции с AppSheet.",
+                helpTitle: "Нужна помощь эксперта?",
+                helpDesc: "Оформите спонсорство на YouTube для доступа в VIP Discord и личных консультаций.",
+                helpBtn: "Присоединиться к ZuraClass",
+                footerText: "Экосистема ZuraClass © 2026"
+            }
+        };
+
+        let currentLang = 'id';
+
+        // Auto-select language on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const langSelect = document.getElementById('langSelector');
+            currentLang = langSelect.value;
+            updateLanguageUI();
+        });
+
+        function switchLanguage(langKey) {
+            if (!uiTranslations[langKey]) return;
+            currentLang = langKey;
+            updateLanguageUI();
+        }
+
+        function updateLanguageUI() {
+            const t = uiTranslations[currentLang];
+            
+            // Header
+            document.getElementById('uiYoutubeBtn').innerText = t.youtubeBtn;
+            document.getElementById('uiDiscordBtn').innerText = t.discordBtn;
+            
+            // Hero
+            document.getElementById('uiBadge').innerText = t.badge;
+            document.getElementById('uiHeroTitle').innerHTML = t.heroTitle;
+            document.getElementById('uiHeroDesc').innerText = t.heroDesc;
+
+            // Badges
+            document.querySelectorAll('.uiStatusActive').forEach(el => el.innerText = t.statusActive);
+            document.querySelectorAll('.uiStatusSoon').forEach(el => el.innerText = t.statusSoon);
+
+            // Card 1
+            document.getElementById('uiCard1Title').innerText = t.card1Title;
+            document.getElementById('uiCard1Desc').innerText = t.card1Desc;
+            document.getElementById('uiCard1Btn').innerHTML = `${t.btnAccess} <i class="fa-solid fa-arrow-right ml-1.5 text-xs"></i>`;
+
+            // Card 2
+            document.getElementById('uiCard2Title').innerText = t.card2Title;
+            document.getElementById('uiCard2Desc').innerText = t.card2Desc;
+            document.getElementById('uiCard2Btn').innerHTML = `${t.btnBrowse} <i class="fa-solid fa-arrow-right ml-1.5 text-xs"></i>`;
+
+            // Cards 3 & 4
+            document.getElementById('uiCard3Title').innerText = t.card3Title;
+            document.getElementById('uiCard3Desc').innerText = t.card3Desc;
+            document.getElementById('uiCard3Btn').innerText = t.btnLocked;
+
+            document.getElementById('uiCard4Title').innerText = t.card4Title;
+            document.getElementById('uiCard4Desc').innerText = t.card4Desc;
+            document.getElementById('uiCard4Btn').innerText = t.btnLocked;
+
+            // Help Section
+            document.getElementById('uiHelpTitle').innerText = t.helpTitle;
+            document.getElementById('uiHelpDesc').innerText = t.helpDesc;
+            document.getElementById('uiHelpBtn').innerText = t.helpBtn;
+
+            // Footer
+            document.getElementById('uiFooterText').innerText = t.footerText;
+        }
+    </script>
+</body>
+</html>
